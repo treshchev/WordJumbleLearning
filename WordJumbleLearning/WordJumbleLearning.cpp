@@ -80,7 +80,7 @@ int main()
 	}
 	std::cout << "\nThanks for playing!\n";
 
-	enum difficulty
+	/*enum difficulty
 	{
 		EASY,
 		MEDIUM,
@@ -88,6 +88,6 @@ int main()
 		NUM_DIFF_LEVELS
 	};
 	std::cout << "There are " << NUM_DIFF_LEVELS << " difficulty levels\n";
-
+*/
 return 0;  
 }
