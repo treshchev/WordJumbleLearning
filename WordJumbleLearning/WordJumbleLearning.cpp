@@ -79,10 +79,8 @@ int main()
 		std::cout << "\nThat's it! You guessed it!\n";
 	}
 	std::cout << "\nThanks for playing!\n";
-	return 0;
 
-
-	/*enum difficulty
+	enum difficulty
 	{
 		EASY,
 		MEDIUM,
@@ -90,5 +88,6 @@ int main()
 		NUM_DIFF_LEVELS
 	};
 	std::cout << "There are " << NUM_DIFF_LEVELS << " difficulty levels\n";
-    */
+
+return 0;  
 }
