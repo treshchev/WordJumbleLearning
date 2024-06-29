@@ -9,7 +9,7 @@
 
 int main()
 {
-	enum fields
+	enum Fields
 	{
 		WORD,
 		HINT,
@@ -56,13 +56,13 @@ int main()
 	std::cout << "Enter 'hint' for a hint.\n";
 	std::cout << "Enter 'quit' to quit the game.\n\n";
 	std::cout << "The jumble is: " << Jumble;
-	std::string Guess;
+	std::string GuessAnswer;
 	std::cout << "\n\nYour guess: ";
-	std::cin >> Guess;
+	std::cin >> GuessAnswer;
 
-	while ((Guess != TheWord) && (Guess != "quit"))
+	while ((GuessAnswer != TheWord) && (GuessAnswer != "quit"))
 	{
-		if (Guess == "hint")
+		if (GuessAnswer == "hint")
 		{
 			std::cout << TheHint;
 		}
@@ -71,10 +71,10 @@ int main()
 			std::cout << "Sorry, that's not it";
 		}
 		std::cout << "\n\nYour guess: ";
-		std::cin >> Guess;
+		std::cin >> GuessAnswer;
 	}
 
-	if (Guess == TheWord)
+	if (GuessAnswer == TheWord)
 	{
 		std::cout << "\nThat's it! You guessed it!\n";
 	}
