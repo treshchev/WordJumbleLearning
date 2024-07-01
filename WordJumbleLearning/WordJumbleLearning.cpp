@@ -42,14 +42,15 @@ int main()
 	std::cout << "Enter 'quit' to quit the game.\n\n";
 	int Score = 0;
 	bool usedHint = false;
+	srand(static_cast<unsigned int>(time(0)));
 	int NumRounds = (rand() % NUM_WORDS + 1);
 	std::cout << "\n\nYou need to guess: " << NumRounds << " words!\n\n";
 
 	for (int Round = 1; Round <= NumRounds; Round++)  // Цикл по раундам
 	{
-		std::string GuessAnswer;
 
-		srand(static_cast<unsigned int>(time(0)));
+
+		std::string GuessAnswer;
 		int Choice = (rand() % NUM_WORDS);
 		std::string TheWord = WORDS[Choice][WORD]; // The word to guess
 		std::string TheHint = WORDS[Choice][HINT]; // The hint for the word
@@ -70,13 +71,14 @@ int main()
 		}
 
 		std::cout << "The jumble is: " << Jumble;
+		std::cout << "\n\nRound  " << Round << "\n";
 		std::cout << "\n\nYour guess: ";
 		std::cin >> GuessAnswer;
 
 
-		std::cout << "\nRound  " << Round << ": \n";
 
-		while ((GuessAnswer != TheWord) && (GuessAnswer != "quit"))
+
+		while (GuessAnswer != "quit")
 		{
 			usedHint = false;
 
@@ -85,29 +87,41 @@ int main()
 				std::cout << TheHint;
 				usedHint = true;
 			}
+			else if (GuessAnswer == TheWord)
+			{
+				std::cout << "\n\nThat's it! You guessed it!\n";
+
+				if (usedHint)
+				{
+					Score = 0;
+					std::cout << "\nYou got " << Score << " points because you used the hint.\n";
+				}
+				else
+				{
+					Score = Score + TheWord.size();
+				}
+				break;
+			}
+
+
 			else
 			{
-				std::cout << "Sorry, that's not it";
+				std::cout << "\n\nSorry, that's not it\n";
+
+				if (Score > 0)
+				{
+					Score = Score - 2;
+					std::cout << "2 points were taken away from you, be careful!";
+				}
+				std::cout << "\n\nYour score: " << Score;
 			}
 			std::cout << "\n\nYour guess: ";
 			std::cin >> GuessAnswer;
 		}
-
-		if (GuessAnswer == TheWord)
+		if (GuessAnswer == "quit")
 		{
-			std::cout << "\nThat's it! You guessed it!\n";
-
-			if (usedHint)
-			{
-				Score = 0;
-				std::cout << "\nYou got " << Score << " points because you used the hint.\n";
-			}
-			else
-			{
-				Score = Score + TheWord.size();
-			}
+			break;
 		}
-
 	}
 	std::cout << "\n\nYour score: " << Score;
 	std::cout << "\nThanks for playing!\n";
