@@ -46,10 +46,8 @@ int main()
 	int NumRounds = (rand() % NUM_WORDS + 1);
 	std::cout << "\n\nYou need to guess: " << NumRounds << " words!\n\n";
 
-	for (int Round = 1; Round <= NumRounds; Round++)  // Цикл по раундам
+	for (int Round = 1; Round <= NumRounds; Round++)
 	{
-
-
 		std::string GuessAnswer;
 		int Choice = (rand() % NUM_WORDS);
 		std::string TheWord = WORDS[Choice][WORD]; // The word to guess
@@ -57,8 +55,6 @@ int main()
 
 		std::string Jumble = TheWord; // The mixed version of the word
 		int Length = Jumble.size();
-
-
 
 		for (int i = 0; i < Length; i++)
 		{
